@@ -3,4 +3,4 @@
 
 ## Домашние задания
 - Июль:
-  - [ДЗ №1](./homeworks/july/homework_1.md)
+  - [ДЗ №1](./homeworks/july/1/homework.md)

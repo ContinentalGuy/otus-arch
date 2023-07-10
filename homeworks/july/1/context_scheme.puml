@@ -1,0 +1,36 @@
+@startuml
+!include <archimate/Archimate>
+
+archimate #whitesmoke "**Система для управления точками продаж** \nСервер\nАдминистративная панель" as system <<application-service>>
+archimate #whitesmoke "**Приложение точки продаж** \n клиентское приложение \n на мобильном \n устройстве" as cashier_app <<application-service>>
+archimate #whitesmoke "**Приложение менеджера** \n**по снабжению** \n клиентское приложение \n на мобильном \n устройстве" as manager_app <<application-service>>
+
+actor "Продавец" as cashier #whitesmoke
+actor "Менеджер" as manager #whitesmoke
+actor "Клиент" as client #whitesmoke
+actor "Владелец бизнеса" as business #whitesmoke
+actor "Команда маркетинга" as marketing #whitesmoke
+actor "Команда разработки" as devs #whitesmoke
+
+' Cashier
+Rel_Access_w(cashier, cashier_app, Ввод данных \n о проданных хот-догах)
+Rel_Access_w(cashier_app, system, Выгрузка отчетов)
+Rel_Access_r(cashier_app, system, Актуальные данные \n для синхронизации \n (настройки приложения /\n скидки /\n...))
+Rel_Access_w(cashier_app, manager_app, Резервирование уведомлений при сбое в работе main системы)
+
+Rel_Serving(cashier, client, Продажа хот-догов)
+
+' Supply Manager
+Rel_Access_r(manager_app, system, Данные для подключения к точке продаж)
+Rel_Access_r(manager, manager_app, Уведомление \n о необходимости \n пополнения запасов \n на точке продаж)
+
+' Business
+Rel_Access_r(business, system, Отчеты)
+
+' Marketing
+Rel_Access_rw(marketing, system, "Настройки для проведения промо-акций и текстов в рассылках")
+
+' Dev
+Rel_Access_rw(devs, system, "Модификация и поддержка \n работы компонентов")
+
+@enduml
