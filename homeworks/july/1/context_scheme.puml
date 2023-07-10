@@ -15,7 +15,7 @@ actor "Команда разработки" as devs #whitesmoke
 ' Cashier
 Rel_Access_w(cashier, cashier_app, Ввод данных \n о проданных хот-догах)
 Rel_Access_w(cashier_app, system, Выгрузка отчетов)
-Rel_Access_r(cashier_app, system, Актуальные данные \n для синхронизации \n (настройки приложения /\n скидки /\n...))
+Rel_Access_r(cashier_app, system, Актуальные данные \n для синхронизации \n (**настройки приложения** /\n скидки /\n...))
 Rel_Access_w(cashier_app, manager_app, Резервирование уведомлений при сбое в работе main системы)
 
 Rel_Serving(cashier, client, Продажа хот-догов)
