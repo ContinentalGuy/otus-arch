@@ -5,3 +5,4 @@
 - Июль:
   - [ДЗ №1](./homeworks/july/1/homework.md)
   - [ДЗ №2](./homeworks/august/1/homework.md)
+  - [ДЗ №3](./homeworks/september/1/homework.md)
