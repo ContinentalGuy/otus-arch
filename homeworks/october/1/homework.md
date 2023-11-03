@@ -98,6 +98,7 @@ classDiagram
     
     CMS_DB -- POS
     CMS_DB -- Tasks
+    CMS_DB -- Settings
     CMS_DB -- CMSReports
     CMSReports <-- CMSTransactions
     POS <-- Employee
@@ -185,8 +186,17 @@ classDiagram
         +json meta
         +string status
     }
+    
+    class Settings{
+        +int id
+        +string type
+        +string key
+        +string value
+        +bool enabled
+    }
 ```
 
 ## Деплоймент диаграмма
 ```mermaid
+
 ```
