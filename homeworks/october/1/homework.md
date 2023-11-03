@@ -198,5 +198,56 @@ classDiagram
 
 ## Деплоймент диаграмма
 ```mermaid
+    C4Deployment
+    title Deployment Diagram for Internet Banking System - Live
 
+    Deployment_Node(mob_pos, "Мобильное приложение точки продаж", "Apple IOS / Android"){
+        Container(mobile_pos, "Мобильное приложение", "Flutter", "Дает оператору возможность вести учет <br> проданных хотдогов и формировать отчеты")
+    }
+
+    Deployment_Node(mob_supply, "Мобильное приложение снабженца", "Apple IOS / Android"){
+        Container(mobile_supply, "Мобильное приложение", "Flutter", "Оповещает снабженца о том, что нужно <br> пополнить запасы на указанной точке продаж")
+    }
+
+    Deployment_Node(comp, "Компьютер администратора", "Любая ОС, на которой запускается браузер"){
+        Deployment_Node(browser, "Web Browser", "Google Chrome, Mozilla Firefox,<br/> Apple Safari or Microsoft Edge"){
+            Container(spa, "Single Page Application", "JavaScript + React", "Предоставляет доступ к базе данных, <br> в которой хранятся отчеты о проданных хотдогах, <br> настройки и задачи для приложений")
+        }
+    }
+
+    Deployment_Node(plc, "Hot Diggety Dog", "датацентр"){
+        Deployment_Node(dn, "API", "CentOS 8.5"){
+            Deployment_Node(nginx, "NGNINX", "Nginx 1.25.3"){
+                Deployment_Node(kubernetes, "Kubernetes"){
+                    Deployment_Node(docker, "Docker"){
+                        Container(api, "REST API", "Golang, Echo", "CRUD к базе данных.")
+                    }
+                }
+            }
+        }
+        Deployment_Node(db0, "db-0", "Ubuntu 22.04 LTS"){
+            Deployment_Node(PostgreSQL, "PostgreSQL"){
+                ContainerDb(db, "База данных", "Реляционная БД", "Хранит отчеты, транзакции, настройки приложений и т.д.")
+            }
+        }
+        Deployment_Node(db1, "db-1", "Ubuntu 22.04 LTS") {
+            Deployment_Node(PostgreSQL-1, "PostgreSQL") {
+                ContainerDb(db2, "База данных", Реляционная БД", "Хранит отчеты, транзакции, настройки приложений и т.д.")
+            }
+        }
+    }
+
+    Rel(mobile_pos, api, "Делает запросы в API", "json/HTTPS")
+    Rel(mobile_supply, api, "Делает запросы в API", "json/HTTPS")
+    Rel(spa, api, "Делает запросы в API", "json/HTTPS")
+    Rel(api, db, "Читает, пишет, удаляет <br> и обновляет строки", "gorm")
+    Rel(api, db2, "Читает, пишет, удаляет <br> и обновляет строки", "gorm")
+    Rel_R(db, db2, "Реплицирует данные")
+
+    UpdateRelStyle(spa, api, $offsetY="-40", $offsetX="-100")
+    UpdateRelStyle(mobile_pos, api, $offsetY="-130", $offsetX="-130")
+    UpdateRelStyle(mobile_supply, api, $offsetY="-130", $offsetX="-60")
+    UpdateRelStyle(api, db, $offsetY="-50", $offsetX="-40")
+    UpdateRelStyle(api, db2, $offsetX="-40", $offsetY="-20")
+    UpdateRelStyle(db, db2, $offsetY="-70")
 ```
