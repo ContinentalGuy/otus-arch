@@ -96,6 +96,12 @@ classDiagram
     Products <-- Recipe
     Reports <-- Transactions
     
+    CMS_DB -- POS
+    CMS_DB -- Tasks
+    CMS_DB -- CMSReports
+    CMSReports <-- CMSTransactions
+    POS <-- Employee
+    
     class APP_DB{
     }
 
@@ -144,6 +150,43 @@ classDiagram
     class CMS_DB{
     }
 
+    class CMSTransactions{
+        +int id
+        +int product_id
+        +string status
+        +string email
+        +string phone_number
+        +int report_id
+        +time created_at
+        +time updated_at
+    }
+
+    class CMSReports{
+        +int id
+        +string name
+        +time created_at
+    }
+    
+    class POS{
+        +int id
+        +string name
+    }
+    
+    class Employee{
+        +int id
+        +string name
+        +string surname
+        +int age
+        +int pos_id
+    }
+
+    class Tasks{
+        +int id
+        +json meta
+        +string status
+    }
 ```
 
 ## Деплоймент диаграмма
+```mermaid
+```
