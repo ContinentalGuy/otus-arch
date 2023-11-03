@@ -84,5 +84,66 @@ C4Context
 ```
 
 ## Декомпозиция слоя данных: какие данные в каких БД хранятся
+```mermaid
+---
+title: Слой данных
+---
+classDiagram
+    APP_DB -- Products
+    APP_DB -- Transactions
+    Ingredients <--> IngredientsToRecipeM2M
+    Recipe <-- IngredientsToRecipeM2M
+    Products <-- Recipe
+    Reports <-- Transactions
+    
+    class APP_DB{
+    }
+
+    class Ingredients{
+        +int id
+        +string name
+        +string units
+        +int counter
+        +int capacity
+    }
+    
+    class IngredientsToRecipeM2M{
+        +int ingredient_id
+        +int recipe_id
+    }
+    
+    class Recipe{
+        +int id
+        +string name
+    }
+
+    class Products{
+        +int id
+        +string name
+        +bool available
+        +int recipe_id
+    }
+
+    class Transactions{
+        +int id
+        +int product_id
+        +string status
+        +string email
+        +string phone_number
+        +int report_id
+        +time created_at
+        +time updated_at
+    }
+
+    class Reports{
+        +int id
+        +string name
+        +time created_at
+    }
+
+    class CMS_DB{
+    }
+
+```
 
 ## Деплоймент диаграмма
