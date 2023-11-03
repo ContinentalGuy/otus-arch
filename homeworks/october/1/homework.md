@@ -66,8 +66,9 @@ C4Context
     }
 
     Rel(admin_api, admin_db, "")
-    Rel(pos_app, admin_api, "")
-    Rel(supplyer_app, admin_api, "")
+    Rel(admin_pannel, admin_db, "")
+    Rel(pos_app, admin_api, "Синхронизация")
+    Rel(admin_api, supplyer_app, "Уведомления")
 ```
 
 ## Декомпозиция слоя данных: какие данные в каких БД хранятся
