@@ -1,0 +1,25 @@
+@startuml
+!include <archimate/Archimate>
+
+archimate #whitesmoke "**ERP** \nСервер\nАдминистративная панель" as system <<application-service>>
+
+actor "Владелец бизнеса" as business #whitesmoke
+actor "Команда разработки" as devs #whitesmoke
+actor "Менеджер" as manager #whitesmoke
+actor "Клиент" as client #whitesmoke
+actor "Мастер (сотрудник)" as employee #whitesmoke
+archimate #Physical "Инвентарь" as inventory <<physical-equipment>>
+
+' Business
+Rel_Access_r(business, system, Выгрузка отчетов)
+
+' Dev
+Rel_Access_rw(devs, system, "Модификация и поддержка \n работы компонентов")
+
+' Manager
+Rel_Access_w(manager, system, Отслеживает движения денежных средств)
+Rel_Serving(manager, employee, Планирует загруженность сотрудников)
+Rel_Serving(manager, inventory, Следит за инвентарем)
+Rel_Access_w(manager, client, Согласует договор)
+
+@enduml
