@@ -1,6 +1,6 @@
 ## Контекстная диаграма
 
-![context.png](../sources/images/context.png)
+![context.png](https://github.com/ContinentalGuy/otus-arch/blob/master/project/sources/images/context.png)
 
 ## Диаграмма контейнеров
 
