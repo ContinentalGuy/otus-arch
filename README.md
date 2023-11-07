@@ -7,3 +7,4 @@
   - [ДЗ №2](./homeworks/august/1/homework.md)
   - [ДЗ №3](./homeworks/september/1/homework.md)
   - [ДЗ №4](./homeworks/october/1/homework.md)
+  - [проект](./project/adr_0.md)
