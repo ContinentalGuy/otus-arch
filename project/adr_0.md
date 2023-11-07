@@ -78,15 +78,7 @@ UC-2: Учет инвентаря:
 - отчеты должны создаваться в формате csv / excel
 
 ## Контекстная схема
-```mermaid
----
-title: ERP
----
-erDiagram
-    MANAGER ||--o{ ORDER : places
-    ORDER ||--|{ LINE-ITEM : contains
-    MANAGER }|..|{ DELIVERY-ADDRESS : uses
-```
+![контекст](sources/images/context.png)
 
 ## Критичные сценарии и критичные характеристики
 **Критичные сценарии**:
