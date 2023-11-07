@@ -78,7 +78,7 @@ UC-2: Учет инвентаря:
 - отчеты должны создаваться в формате csv / excel
 
 ## Контекстная схема
-![context.png](sources/images/context.png)
+![context.png](../sources/images/context.png)
 
 ## Критичные сценарии и критичные характеристики
 **Критичные сценарии**:
