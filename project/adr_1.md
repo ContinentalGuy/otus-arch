@@ -1,6 +1,6 @@
 ## Контекстная диаграма
 
-![context.png](sources%2Fimages%2Fcontext.png)
+![context.png](sources/images/context.png)
 
 ## Диаграмма контейнеров
 
