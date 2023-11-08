@@ -117,7 +117,7 @@ sequenceDiagram
     Admin ->> ERP: PATCH /inventory/1
     activate ERP
     Note over Admin,ERP: {"name": "milling cutter", <br>"state": "broken", <br>"location": "in the workshop"}
-    ERP ->> DB: INSERT
+    ERP ->> DB: UPDATE
     ERP -->> Admin: 200 OK
     deactivate ERP
 ```
