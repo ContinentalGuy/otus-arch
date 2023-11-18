@@ -88,7 +88,7 @@ package "Расчеты" $color4 {
     comment: text
     id: integer
     }
-    class payment_methods {
+    class payment_method {
     name: varchar(255)
     id: integer
     }
@@ -138,7 +138,7 @@ actual_operation   -[$color6,$style1]->  unit              : "unit_id:id"
 actual_operation   -[$color6,$style1]->  account           : "account_id:id"
 actual_operation   -[$color6,$style1]->  contract          : "contract_id:id"
 actual_operation   -[$color6,$style1]->  object            : "object_id:id"
-actual_operation   -[$color6,$style1]->  payment_methods   : "payment_method_id:id"
+actual_operation   -[$color6,$style1]->  payment_method   : "payment_method_id:id"
 contract           -[$color6,$style1]->  object            : "object_id:id"
 employee_log       -[$color6,$style1]->  employee          : "employee_id:id"
 object             -[$color6,$style1]->  customer          : "customer_id:id"
