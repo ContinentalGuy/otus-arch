@@ -17,31 +17,32 @@ skinparam packageborderthickness 2
 !$style1 = "plain"
 
 package "Каталог" $color1 {
-    class locations {
+    class location {
     name: varchar(255)
     id: integer
     }
-    class purposes {
+    class purpose {
     name: varchar(255)
     id: integer
     }
-    class units {
+    class unit {
     name: varchar(255)
     id: integer
     }
 }
 
 package "Инвентарь" $color2 {
-    class disks {
+    class inventory {
     reg_number: integer
-    diameter: integer
+    type: varchar(255)
+    parameters: integer
     purchase_date: datetime
     disposal_date: datetime
     purpose_id: bigint
     manufacturer: varchar(255)
     id: integer
     }
-    class disk_operations {
+    class inventory_operation {
     date: datetime
     disk_id: bigint
     employee_id: bigint
@@ -73,7 +74,7 @@ package "Расчеты" $color4 {
     contract_id: bigint
     object_id: bigint
     payment_method_id: bigint
-    units_id: bigint
+    unit_id: bigint
     id: integer
     }
     class contract {
@@ -128,12 +129,12 @@ package "Персонал" $color5 {
     }
 }
 
-disks             -[$color6,$style1]->  purposes           : "purpose_id:id"
-disk_operations   -[$color6,$style1]->  locations          : "location_id:id"
-disk_operations   -[$color6,$style1]->  disks            : "disk_id:id"
-disk_operations   -[$color6,$style1]->  employee          : "employee_id:id"
+inventory             -[$color6,$style1]->  purpose           : "purpose_id:id"
+inventory_operation   -[$color6,$style1]->  location          : "location_id:id"
+inventory_operation   -[$color6,$style1]->  inventory            : "disk_id:id"
+inventory_operation   -[$color6,$style1]->  employee          : "employee_id:id"
 account            -[$color6,$style1]->  account_type       : "account_type_id:id"
-actual_operation   -[$color6,$style1]->  units              : "units_id:id"
+actual_operation   -[$color6,$style1]->  unit              : "unit_id:id"
 actual_operation   -[$color6,$style1]->  account           : "account_id:id"
 actual_operation   -[$color6,$style1]->  contract          : "contract_id:id"
 actual_operation   -[$color6,$style1]->  object            : "object_id:id"
