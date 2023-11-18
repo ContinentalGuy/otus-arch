@@ -44,7 +44,7 @@ package "Инвентарь" $color2 {
     }
     class inventory_operation {
     date: datetime
-    disk_id: bigint
+    inventory_id: bigint
     employee_id: bigint
     location_id: bigint
     id: integer
@@ -131,7 +131,7 @@ package "Персонал" $color5 {
 
 inventory             -[$color6,$style1]->  purpose           : "purpose_id:id"
 inventory_operation   -[$color6,$style1]->  location          : "location_id:id"
-inventory_operation   -[$color6,$style1]->  inventory            : "disk_id:id"
+inventory_operation   -[$color6,$style1]->  inventory            : "inventory_id:id"
 inventory_operation   -[$color6,$style1]->  employee          : "employee_id:id"
 account            -[$color6,$style1]->  account_type       : "account_type_id:id"
 actual_operation   -[$color6,$style1]->  unit              : "unit_id:id"
