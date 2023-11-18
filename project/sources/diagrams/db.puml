@@ -3,12 +3,18 @@
 !theme plain
 top to bottom direction
 skinparam linetype ortho
+skinparam classborderthickness 2
+skinparam packageborderstyle 4
+skinparam packageborderthickness 2
 
 !$color1 = "#94E2EB"
 !$color2 = "#4A7175"
 !$color3 = "#304A4D"
 !$color4 = "#7DC0C7"
 !$color5 = "#64989E"
+!$color6 = "#544E87"
+
+!$style1 = "plain"
 
 package "Каталог" $color1 {
     class locations {
@@ -26,7 +32,7 @@ package "Каталог" $color1 {
 }
 
 package "Инвентарь" $color2 {
-    class inventory_disks {
+    class disks {
     reg_number: integer
     diameter: integer
     purchase_date: datetime
@@ -35,7 +41,7 @@ package "Инвентарь" $color2 {
     manufacturer: varchar(255)
     id: integer
     }
-    class inventory_disksoperations {
+    class disk_operations {
     date: datetime
     disk_id: bigint
     employee_id: bigint
@@ -122,19 +128,19 @@ package "Персонал" $color5 {
     }
 }
 
-inventory_disks             -[#595959,plain]-^  purposes           : "purpose_id:id"
-inventory_disksoperations   -[#595959,plain]-^  locations          : "location_id:id"
-inventory_disksoperations   -[#595959,plain]-^  inventory_disks            : "disk_id:id"
-inventory_disksoperations   -[#595959,plain]-^  employee          : "employee_id:id"
-account            -[#595959,plain]-^  account_type       : "account_type_id:id"
-actual_operation   -[#595959,plain]-^  units              : "units_id:id"
-actual_operation   -[#595959,plain]-^  account           : "account_id:id"
-actual_operation   -[#595959,plain]-^  contract          : "contract_id:id"
-actual_operation   -[#595959,plain]-^  object            : "object_id:id"
-actual_operation   -[#595959,plain]-^  payment_methods   : "payment_method_id:id"
-contract           -[#595959,plain]-^  object            : "object_id:id"
-employee_log       -[#595959,plain]-^  employee          : "employee_id:id"
-object             -[#595959,plain]-^  customer          : "customer_id:id"
-planned_operation  -[#595959,plain]-^  contract          : "contract_id:id"
-planned_operation  -[#595959,plain]-^  object            : "object_id:id"
+disks             -[$color6,$style1]->  purposes           : "purpose_id:id"
+disk_operations   -[$color6,$style1]->  locations          : "location_id:id"
+disk_operations   -[$color6,$style1]->  disks            : "disk_id:id"
+disk_operations   -[$color6,$style1]->  employee          : "employee_id:id"
+account            -[$color6,$style1]->  account_type       : "account_type_id:id"
+actual_operation   -[$color6,$style1]->  units              : "units_id:id"
+actual_operation   -[$color6,$style1]->  account           : "account_id:id"
+actual_operation   -[$color6,$style1]->  contract          : "contract_id:id"
+actual_operation   -[$color6,$style1]->  object            : "object_id:id"
+actual_operation   -[$color6,$style1]->  payment_methods   : "payment_method_id:id"
+contract           -[$color6,$style1]->  object            : "object_id:id"
+employee_log       -[$color6,$style1]->  employee          : "employee_id:id"
+object             -[$color6,$style1]->  customer          : "customer_id:id"
+planned_operation  -[$color6,$style1]->  contract          : "contract_id:id"
+planned_operation  -[$color6,$style1]->  object            : "object_id:id"
 @enduml
