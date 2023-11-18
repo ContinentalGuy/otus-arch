@@ -121,3 +121,6 @@ sequenceDiagram
     ERP -->> Admin: 200 OK
     deactivate ERP
 ```
+
+## Структура хранилища данных
+Структура базы данных описана в следующей [ADR](adr_2.md).
