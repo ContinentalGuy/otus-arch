@@ -32,7 +32,7 @@ C4Deployment
 
     Deployment_Node(plc, "ЦОД", "датацентр") {
         Deployment_Node(dn, "ERP", "Ubuntu 22.04 LTS") {
-            Deployment_Node(nginx, "NGNINX", "Nginx 1.25.3") {
+            Deployment_Node(nginx, "NGINX", "Nginx 1.25.3") {
                 Container(api, "ERP", "ERP на Django", "Python 3.11")
             }
             Deployment_Node(PostgreSQL, "PostgreSQL") {
