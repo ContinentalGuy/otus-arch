@@ -1,0 +1,147 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+skinparam classborderthickness 2
+skinparam packageborderstyle 4
+skinparam packageborderthickness 2
+
+!$color1 = "#94E2EB"
+!$color2 = "#4A7175"
+!$color3 = "#304A4D"
+!$color4 = "#7DC0C7"
+!$color5 = "#64989E"
+!$color6 = "#544E87"
+
+!$style1 = "plain"
+
+package "Каталог" $color1 {
+    class location {
+    name: varchar(255)
+    id: integer
+    }
+    class purpose {
+    name: varchar(255)
+    id: integer
+    }
+    class unit {
+    name: varchar(255)
+    id: integer
+    }
+}
+
+package "Инвентарь" $color2 {
+    class inventory {
+    reg_number: integer
+    type: varchar(255)
+    parameters: integer
+    purchase_date: datetime
+    disposal_date: datetime
+    purpose_id: bigint
+    manufacturer: varchar(255)
+    id: integer
+    }
+    class inventory_operation {
+    date: datetime
+    inventory_id: bigint
+    employee_id: bigint
+    location_id: bigint
+    id: integer
+    }
+}
+
+package "Расчеты" $color4 {
+    class account {
+    name: varchar(255)
+    bank_name: varchar(255)
+    account_type_id: bigint
+    balance: bigint
+    id: integer
+    }
+    class account_type {
+    name: varchar(255)
+    id: integer
+    }
+    class actual_operation {
+    name: varchar(255)
+    size: varchar(255)
+    amount: real
+    income: bool
+    outcome: bool
+    created_at: datetime
+    account_id: bigint
+    contract_id: bigint
+    object_id: bigint
+    payment_method_id: bigint
+    unit_id: bigint
+    id: integer
+    }
+    class contract {
+    name: varchar(255)
+    deadline: datetime
+    object_id: bigint
+    id: integer
+    }
+    class customer {
+    name: varchar(255)
+    comment: text
+    id: integer
+    }
+    class payment_method {
+    name: varchar(255)
+    id: integer
+    }
+    class planned_operation {
+    name: varchar(255)
+    amount: real
+    income: bool
+    outcome: bool
+    created_at: datetime
+    contract_id: bigint
+    object_id: bigint
+    id: integer
+    }
+    class object {
+    name: varchar(255)
+    address: text
+    customer_id: bigint
+    id: integer
+    }
+}
+
+package "Персонал" $color5 {
+    class employee {
+    name: varchar(255)
+    position: varchar(255)
+    phone: varchar(255)
+    card_number: integer
+    birthday: date
+    comment: text
+    id: integer
+    }
+    class employee_log {
+    active: bool
+    comment: text
+    created_at: date
+    employee_id: bigint
+    id: integer
+    }
+}
+
+inventory             -[$color6,$style1]->  purpose           : "purpose_id:id"
+inventory_operation   -[$color6,$style1]->  location          : "location_id:id"
+inventory_operation   -[$color6,$style1]->  inventory            : "inventory_id:id"
+inventory_operation   -[$color6,$style1]->  employee          : "employee_id:id"
+account            -[$color6,$style1]->  account_type       : "account_type_id:id"
+actual_operation   -[$color6,$style1]->  unit              : "unit_id:id"
+actual_operation   -[$color6,$style1]->  account           : "account_id:id"
+actual_operation   -[$color6,$style1]->  contract          : "contract_id:id"
+actual_operation   -[$color6,$style1]->  object            : "object_id:id"
+actual_operation   -[$color6,$style1]->  payment_method   : "payment_method_id:id"
+contract           -[$color6,$style1]->  object            : "object_id:id"
+employee_log       -[$color6,$style1]->  employee          : "employee_id:id"
+object             -[$color6,$style1]->  customer          : "customer_id:id"
+planned_operation  -[$color6,$style1]->  contract          : "contract_id:id"
+planned_operation  -[$color6,$style1]->  object            : "object_id:id"
+@enduml
