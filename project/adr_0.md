@@ -83,7 +83,7 @@ UC-2: Учет инвентаря:
 - отчеты должны создаваться в формате csv / excel
 
 ## Контекстная схема
-![context.png](https://github.com/ContinentalGuy/otus-arch/blob/master/project/sources/images/context.png)
+![context](sources/diagrams/context.puml)
 
 ## Критичные сценарии и критичные характеристики
 **Критичные сценарии**:
