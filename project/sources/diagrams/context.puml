@@ -9,6 +9,8 @@ actor "Менеджер" as manager #whitesmoke
 actor "Клиент" as client #whitesmoke
 actor "Мастер (сотрудник)" as employee #whitesmoke
 archimate #Physical "Инвентарь" as inventory <<physical-equipment>>
+cloud "Bubble.IO" as bubble #whitesmoke
+cloud "AWS" as aws #whitesmoke
 
 ' Business
 Rel_Access_r(business, system, Выгрузка отчетов)

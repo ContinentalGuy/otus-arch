@@ -7,13 +7,19 @@
 ```mermaid
 C4Container
     Container_Boundary(erp, "Bubble.IO") {
+        Container_Boundary(b_controllers, "Контроллеры") {
+            Container(controllers, "Контроллер", "")
+        }
+        Container_Boundary(b_database, "База данных") {
+            Container(database, "База данных", "Пользователи, Права")
+        }
         Container_Boundary(b_visual, "Визуальные элементы") {
             Container(admin_pannel, "ERP", "Административная панель")
         }
         Container_Boundary(plugins, "Plugins") {
             Container(connector, "API Connector", "Bubble.io коннектор")
             Container(auth, "Google OAuth 2.0", "плагин для авторизации пользователей")
-            Container(csv_import, "CSV Excel Importer", "плагин для выгрузки отчетов в Excel")
+            Container(csv_import, "CSV Excel Importer", "плагин для выгрузки <br>отчетов в Excel")
             Container(openai, "OpenAI Assistant API", "плагин для работы ассистента")
             Container(stripe, "Stripe", "плагин для приема карточных платежей")
             Container(paypal, "PayPal Checkout", "плагин для приема платежей через PayPal")
@@ -25,8 +31,11 @@ C4Container
         ContainerDb(postgre, "PostgreSQL", "Хранение заказов, договоров, <br> объектов, счетов и пр.")
     }
 
-    Person(admin, "Администратор", "")
-    Person(business, "Владелец бизнеса", "")
+    Container_Boundary(subsidiaries, "ДЗО", "дочерние и <br>зависимые общества") {
+        Person(admin, "Администратор", "")
+        Person(business, "Владелец бизнеса", "")
+    }
+
     Rel(admin_pannel, connector, "")
     Rel(connector, gateway, "")
     Rel(gateway, postgre, "")
@@ -39,8 +48,8 @@ C4Container
     Rel(admin_pannel, stripe, "Обработка <br>карточных платежей")
     Rel(admin_pannel, paypal, "Обработка <br>платежей PayPal")
 
-    UpdateRelStyle(admin, admin_pannel, $offsetY="-70", $offsetX="-150")
-    UpdateRelStyle(business, admin_pannel, $offsetY="-70", $offsetX="40")
+    UpdateRelStyle(admin, admin_pannel, $lineColor="#8073ac", $offsetY="-70", $offsetX="-150")
+    UpdateRelStyle(business, admin_pannel, $lineColor="#8073ac", $offsetY="130", $offsetX="-20")
     UpdateRelStyle(admin_pannel, auth, $offsetY="-30", $offsetX="0")
     UpdateRelStyle(auth, admin_pannel, $offsetY="30", $offsetX="0")
     UpdateRelStyle(admin_pannel, csv_import, $offsetY="70", $offsetX="0")
